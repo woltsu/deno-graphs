@@ -1,2 +1,2 @@
-export { Graph } from "./core/graph.ts";
-export { Vertex } from "./core/vertex.ts";
+export * from "./core/mod.ts";
+export * from "./algorithms/mod.ts";

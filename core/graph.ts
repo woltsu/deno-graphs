@@ -1,4 +1,4 @@
-import { Vertex } from "./Vertex.ts";
+import { Vertex } from "./vertex.ts";
 
 export class Graph {
   vertices: { [key: string]: Vertex } = {};
