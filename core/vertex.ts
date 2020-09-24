@@ -1,4 +1,4 @@
-export class Node {
+export class Vertex {
   key: string;
   edges: { [key: string]: number } = {};
 
@@ -6,7 +6,7 @@ export class Node {
     this.key = key;
   }
 
-  add(node: Node, weight: number) {
-    this.edges[node.key] = weight;
+  add(vertex: Vertex, weight: number) {
+    this.edges[vertex.key] = weight;
   }
 }

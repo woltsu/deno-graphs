@@ -1,19 +1,19 @@
-import { Node } from "./node.ts";
+import { Vertex } from "./Vertex.ts";
 
 export class Graph {
-  nodes: { [key: string]: Node } = {};
+  vertices: { [key: string]: Vertex } = {};
 
-  add(...nodes: Node[]) {
-    nodes.forEach((n) => {
-      this.nodes[n.key] = n;
+  add(...vertices: Vertex[]) {
+    vertices.forEach((n) => {
+      this.vertices[n.key] = n;
     });
   }
 
-  get(key: string): Node | null {
-    return this.nodes[key] ?? null;
+  get(key: string): Vertex | null {
+    return this.vertices[key] ?? null;
   }
 
   print() {
-    console.log(this.nodes);
+    console.log(this.vertices);
   }
 }
