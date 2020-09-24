@@ -9,6 +9,10 @@ export class Graph {
     });
   }
 
+  get(key: string): Node | null {
+    return this.nodes[key] ?? null;
+  }
+
   print() {
     console.log(this.nodes);
   }
