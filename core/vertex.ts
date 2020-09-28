@@ -6,7 +6,7 @@ export class Vertex {
     this.key = key;
   }
 
-  add(vertex: Vertex, weight: number) {
+  add(vertex: Vertex, weight: number = 1) {
     this.edges[vertex.key] = weight;
   }
 }
