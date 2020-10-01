@@ -34,5 +34,5 @@ deno run -r https://raw.githubusercontent.com/woltsu/deno-graphs/master/examples
 
 # Contributing
 1. Clone the project
-2. Create an algorithm to `/algorithms` and an example of it in `/examples`
-3. Create a pull request
+2. Create an algorithm to `/algorithms` and an example of it in `/examples`. Remember to export the algorithm from `/algorithms/mod.ts` as well
+3. Create a pull request to the branch `Trunk`
