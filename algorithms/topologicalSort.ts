@@ -9,11 +9,11 @@ const topologicalRecursive = (
 ) => {
   visited[v.key] = true;
 
-  Object.keys(v.edges).forEach((k) => {
-    const t = graph.vertices[k];
+  v.edges.forEach((edge) => {
+    const target = edge.t;
 
-    if (!visited[t.key]) {
-      topologicalRecursive(t, visited, stack, graph);
+    if (!visited[target.key]) {
+      topologicalRecursive(target, visited, stack, graph);
     }
   });
 
