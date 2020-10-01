@@ -1,12 +1,16 @@
+import { Edge } from "./edge.ts";
+
 export class Vertex {
   key: string;
-  edges: { [key: string]: number } = {};
+  edges: Edge[] = [];
 
   constructor(key: string) {
     this.key = key;
   }
 
-  add(vertex: Vertex, weight: number = 1) {
-    this.edges[vertex.key] = weight;
+  add(vertex: Vertex, weight?: number, capacity?: number) {
+    this.edges.push(
+      new Edge(this, vertex, weight, capacity),
+    );
   }
 }
