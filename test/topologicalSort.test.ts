@@ -25,4 +25,6 @@ Deno.test("topologicalSort", () => {
   assertEquals(sorted[1].key, "a");
   assertEquals(sorted[2].key, "b");
   assertEquals(sorted[3].key, "e");
+  assertEquals(sorted[4].key, "c");
+  assertEquals(sorted.length, 5);
 });
