@@ -38,13 +38,44 @@ Deno.test("exactPath - no path", () => {
   b.add(c, 1);
   c.add(b, 2);
   G.add(s, b, c, t);
-
-  assertEquals(exactPath(G, s, t, 0), true);
+  
+  assertEquals(exactPath(G, s, t, 0), false);
   assertEquals(exactPath(G, s, t, 1), false);
   assertEquals(exactPath(G, s, t, 2), false);
   assertEquals(exactPath(G, s, t, 3), false);
   assertEquals(exactPath(G, s, t, 4), false);
   assertEquals(exactPath(G, s, t, 5), false);
+});
+
+Deno.test("exactPath - always path to self but not others", () => {
+  const G = new Graph();
+
+  const s = new Vertex("s");
+  const b = new Vertex("b");
+  const c = new Vertex("c");
+  const t = new Vertex("t");
+
+  G.add(s, b, c, t);
+
+  assertEquals(exactPath(G, s, s, 0), true);
+  assertEquals(exactPath(G, s, s, 1), false);
+  assertEquals(exactPath(G, s, s, 2), false);
+  assertEquals(exactPath(G, s, s, 3), false);
+  
+  assertEquals(exactPath(G, s, b, 0), false);
+  assertEquals(exactPath(G, s, b, 1), false);
+  assertEquals(exactPath(G, s, b, 2), false);
+  assertEquals(exactPath(G, s, b, 3), false);
+  
+  assertEquals(exactPath(G, s, c, 0), false);
+  assertEquals(exactPath(G, s, c, 1), false);
+  assertEquals(exactPath(G, s, c, 2), false);
+  assertEquals(exactPath(G, s, c, 3), false);
+  
+  assertEquals(exactPath(G, s, t, 0), false);
+  assertEquals(exactPath(G, s, t, 1), false);
+  assertEquals(exactPath(G, s, t, 2), false);
+  assertEquals(exactPath(G, s, t, 3), false);
 });
 
 Deno.test("exactPath - even path lengths are found", () => {
