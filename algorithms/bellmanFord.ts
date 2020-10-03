@@ -2,7 +2,8 @@ import { Graph } from "../core/graph.ts";
 import { Vertex } from "../core/vertex.ts";
 
 export const bellmanFord = (G: Graph, s: Vertex) => {
-  const vertices = G.getVertices()
+  const vertices = G.getVertices();
+  const edges = G.getEdges();
 
   const d: { [vertex: string]: number } = {};
   const path: { [vertex: string]: (Vertex | null) } = {};
@@ -15,15 +16,14 @@ export const bellmanFord = (G: Graph, s: Vertex) => {
   d[s.key] = 0;
 
   for (let i = 0; i < vertices.length - 1; i++) {
-    vertices.forEach((v) => {
-      v.edges.forEach((edge) => {
-        const target = edge.t
+    edges.forEach((edge) => {
+      const source = edge.s;
+      const target = edge.t;
 
-        if (d[v.key] + edge.weight < d[target.key]) {
-          d[target.key] = d[v.key] + edge.weight;
-          path[target.key] = v;
-        }
-      });
+      if (d[source.key] + edge.weight < d[target.key]) {
+        d[target.key] = d[source.key] + edge.weight;
+        path[target.key] = source;
+      }
     });
   }
 
