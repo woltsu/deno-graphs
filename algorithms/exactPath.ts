@@ -21,8 +21,10 @@ export const exactPath = (G: Graph, s: Vertex, t: Vertex, C: number) => {
 
   // Assume that |V| < |E|, thus time complexity here is O(|E|).
   vertices.forEach((v, i) => {
-    P[v.key] = new Array(C + 1).fill(i === 0);
+    P[v.key] = new Array(C + 1).fill(false);
   });
+
+  P[s.key][0] = true;
 
   pathRecursive(s, 0, C, P);
 
